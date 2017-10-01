@@ -21,10 +21,13 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-        Yii::setAlias('@stesi/modules/cms', Yii::getAlias('@app/stesi-cms/src'));
+
+        Yii::setAlias('@stesi/modules/cms', Yii::getAlias('@vendor/tna-software/cms/src'));
+
         if (Yii::$app instanceof \yii\console\Application) {
             $this->controllerNamespace = 'stesi\modules\cms\commands';
         }
+
         Yii::$app->view->on(MenuEvent::EVENT_BEFORE_RENDER, [$this, 'addMenuItems']);
     }
 
