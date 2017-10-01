@@ -1,5 +1,5 @@
 {
-    "name": "stesi/modules/cms",
+    "name": "tna-software/cms",
     "description": "Stesi CMS module",
     "type": "package",
     "minimum-stability": "dev",
