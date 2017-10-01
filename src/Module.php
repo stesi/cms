@@ -22,7 +22,7 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
-        Yii::setAlias('@stesi/modules/cms', Yii::getAlias('@vendor/tna-software/cms/src'));
+        Yii::setAlias('@stesi/modules/cms', Yii::getAlias('@vendor/stesi-modules/cms/src'));
 
         if (Yii::$app instanceof \yii\console\Application) {
             $this->controllerNamespace = 'stesi\modules\cms\commands';
