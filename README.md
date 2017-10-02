@@ -1,6 +1,6 @@
 # CMS
 
-CMS base module for STeSI.erp
+### CMS base module for STeSI.erp
 
 --------
 
@@ -12,7 +12,7 @@ Add module in `config/web.php` AND `config/console.php`:
 'module' => [
     // other modules
     'cms' => [
-        'class' => 'stesi\modules\cms\Module',
+        'class' => 'stesi\cms\Module', 
     ],
     // other modules
 ],
