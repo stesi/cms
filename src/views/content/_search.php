@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model stesi\modules\cms\models\grid\ContentGrid */
+/* @var $model stesi\cms\models\grid\ContentGrid */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

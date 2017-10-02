@@ -1,6 +1,6 @@
 <?php
 
-namespace stesi\modules\cms\controllers;
+namespace stesi\cms\controllers;
 
 use app\actions\CreateAction;
 use app\actions\DeleteAction;
@@ -11,8 +11,8 @@ use app\actions\ListActionQuery;
 use app\actions\UpdateAction;
 use app\actions\ViewAction;
 use app\controllers\StesiController;
-use stesi\modules\cms\models\Content;
-use stesi\modules\cms\models\grid\ContentGrid;
+use stesi\cms\models\Content;
+use stesi\cms\models\grid\ContentGrid;
 use yii\db\Query;
 
 /**

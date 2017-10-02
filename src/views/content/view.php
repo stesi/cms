@@ -3,7 +3,7 @@
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model stesi\modules\cms\models\Content */
+/* @var $model stesi\cms\models\Content */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('gles/content/labels', 'Contents'), 'url' => ['index']];

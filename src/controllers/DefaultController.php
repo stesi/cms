@@ -1,6 +1,6 @@
 <?php
 
-namespace stesi\modules\cms\controllers;
+namespace stesi\cms\controllers;
 
 use yii\web\Controller;
 

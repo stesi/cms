@@ -14,9 +14,9 @@ use kartik\builder\FormGrid;
 use kartik\widgets\Select2;
 
 /* @var $this yii\web\View */
-/* @var $model stesi\modules\cms\models\Content */
+/* @var $model stesi\cms\models\Content */
 /* @var $form yii\widgets\ActiveForm
- * @var $contentType stesi\modules\cms\models\ContentType
+ * @var $contentType stesi\cms\models\ContentType
  */
 ?>
 <?php Pjax::begin();?>

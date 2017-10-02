@@ -1,13 +1,13 @@
 <?php
 
-namespace stesi\modules\cms\models\grid;
+namespace stesi\cms\models\grid;
 
-use stesi\modules\cms\models\Content;
+use stesi\cms\models\Content;
 use Yii;
 use yii\data\ActiveDataProvider;
 
 /**
- * ContentGrid represents the model behind the search form about `stesi\modules\cms\models\Content`.
+ * ContentGrid represents the model behind the search form about `stesi\cms\models\Content`.
  */
 class ContentGrid extends Content
 {

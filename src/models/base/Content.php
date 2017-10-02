@@ -1,6 +1,6 @@
 <?php
 
-namespace stesi\modules\cms\models\base;
+namespace stesi\cms\models\base;
 
 use app\models\base\StesiModel;
 use Yii;
@@ -27,7 +27,7 @@ use yii\behaviors\BlameableBehavior;
  * @property string $content_after
  * @property integer $is_block_page
  *
- * @property \stesi\modules\cms\models\ContentType $contentType
+ * @property \stesi\cms\models\ContentType $contentType
  */
 class Content extends StesiModel
 {
@@ -48,7 +48,7 @@ class Content extends StesiModel
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => \app\modules\gles\models\User::className(), 'targetAttribute' => ['updated_by' => 'id']],
             [['summary'], 'string', 'max' => 256],
             [['summary'], 'default'],
-            [['content_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => \stesi\modules\cms\models\ContentType::className(), 'targetAttribute' => ['content_type_id' => 'id']]
+            [['content_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => \stesi\cms\models\ContentType::className(), 'targetAttribute' => ['content_type_id' => 'id']]
         ];
     }
     
@@ -65,7 +65,7 @@ class Content extends StesiModel
      */
     public function getContentType()
     {
-        return $this->hasOne(\stesi\modules\cms\models\ContentType::className(), ['id' => 'content_type_id']);
+        return $this->hasOne(\stesi\cms\models\ContentType::className(), ['id' => 'content_type_id']);
     }
 
     /**

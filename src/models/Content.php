@@ -1,9 +1,9 @@
 <?php
 
-namespace stesi\modules\cms\models;
+namespace stesi\cms\models;
 
 use Yii;
-use \stesi\modules\cms\models\base\Content as BaseContent;
+use \stesi\cms\models\base\Content as BaseContent;
 
 /**
  * This is the model class for table "content".

@@ -1,6 +1,6 @@
 <?php
 
-namespace stesi\modules\cms\models\base;
+namespace stesi\cms\models\base;
 
 use app\models\base\StesiModel;
 use Yii;

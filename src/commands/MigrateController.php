@@ -1,6 +1,6 @@
 <?php
 
-namespace stesi\modules\cms\commands;
+namespace stesi\cms\commands;
 
 class MigrateController extends \yii\console\controllers\MigrateController
 {

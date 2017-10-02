@@ -1,6 +1,6 @@
 <?php
 
-namespace stesi\modules\cms;
+namespace stesi\cms;
 
 use app\events\MenuEvent;
 use Yii;
@@ -13,7 +13,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'stesi\modules\cms\controllers';
+    public $controllerNamespace = 'stesi\cms\controllers';
 
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class Module extends \yii\base\Module
         Yii::setAlias('@stesi/modules/cms', Yii::getAlias('@vendor/stesi-modules/cms/src'));
 
         if (Yii::$app instanceof \yii\console\Application) {
-            $this->controllerNamespace = 'stesi\modules\cms\commands';
+            $this->controllerNamespace = 'stesi\cms\commands';
         }
 
         Yii::$app->view->on(MenuEvent::EVENT_BEFORE_RENDER, [$this, 'addMenuItems']);

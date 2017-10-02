@@ -1,9 +1,9 @@
 <?php
 
-namespace stesi\modules\cms\models;
+namespace stesi\cms\models;
 
 use Yii;
-use \stesi\modules\cms\models\base\ContentRelationManager as BaseContentRelationManager;
+use \stesi\cms\models\base\ContentRelationManager as BaseContentRelationManager;
 
 /**
  * This is the model class for table "content_relation_manager".
