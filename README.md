@@ -1,4 +1,4 @@
-# CMS 123
+# CMS 
 
 ### CMS base module for STeSI.erp
 
