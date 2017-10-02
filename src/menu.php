@@ -2,7 +2,7 @@
 
 
 $menu_cms = [
-    'label' => '<span class="icon"><i class="fa fa-magic"></i></span> <span class="menu-item-parent">' . Yii::t('app/menu/cms', 'Cms') . '</span>',
+    'label' => '<i class="fa fa-lg fa-fw fa-magic"></i> <span class="menu-item-parent">' . Yii::t('app/menu/cms', 'Cms') . '</span>',
     'url' => ["/cms/content"],
     'indexLabelMenu' => 'Content',
     "items" => [
