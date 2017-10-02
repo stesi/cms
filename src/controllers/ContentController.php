@@ -30,12 +30,10 @@ class ContentController extends StesiController
             'create' => [
                 'class' => CreateAction::className(),
                 'modelClass' => Content::className(),
-                'scenario' => 'insert'
             ],
             'update' => [
                 'class' => UpdateAction::className(),
                 'modelClass' => Content::className(),
-                'scenario' => 'update'
             ],
             'delete' => [
                 'class' => DeleteAction::className(),
@@ -63,6 +61,7 @@ class ContentController extends StesiController
             ],
             'content-type-list' => [
                 'class' => ListActionQuery::className(),
+                'description_name' => 'id',
                 'query' => (new Query())->select(['id as id', 'id as text'])->distinct()
                     ->from('content_type')
             ],
