@@ -18,4 +18,4 @@ Add module in `config/web.php` AND `config/console.php`:
 ],
 ```
 
-Run migration from console: `yii cms/migrate`
+Run migration from console: `yii migrate --migrationPath=vendor/stesi-modules/cms/src/migrations`
