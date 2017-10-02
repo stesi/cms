@@ -4,7 +4,7 @@ CMS base module for STeSI.erp
 
 --------
 
-Add package: `"stesi/cms": "dev-master"` to composer.json (or version instead of dev-master if package have been released)
+Add package: `"stesi/cms": "*"` to composer.json (or version instead of dev-master if package have been released)
 
 Add module in `config/web.php` AND `config/console.php`:
 
