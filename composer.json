@@ -1,6 +1,6 @@
 {
     "name": "stesi-modules/cms",
-    "description": "Stesi CMS module",
+    "description": "STeSI CMS module for STeSI.erp",
     "type": "package",
     "minimum-stability": "dev",
     "keywords": ["yii2","extension","cms"],
