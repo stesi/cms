@@ -20,8 +20,8 @@ class ContentGrid extends Content
     public function rules()
     {
         return [
-            [['id', 'created_by', 'updated_by', 'is_block_page'], 'integer'],
-            [['content_type_id', 'title', 'body', 'icon', 'tip', 'created_at', 'updated_at', 'start_date', 'end_date', 'content_before', 'content_after'], 'safe'],
+            [['id', 'created_by', 'updated_by'], 'integer'],
+            [['content_type_id', 'title', 'body', 'icon', 'tip', 'created_at', 'updated_at', 'start_date', 'end_date'], 'safe'],
             [['globalSearch'], 'safe'],
         ];
     }
@@ -65,16 +65,13 @@ class ContentGrid extends Content
             'updated_by' => $this->updated_by,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
-            'is_block_page' => $this->is_block_page,
         ]);
 
         $query->andFilterWhere(['like', 'content_type_id', $this->content_type_id])
             ->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'body', $this->body])
             ->andFilterWhere(['like', 'icon', $this->icon])
-            ->andFilterWhere(['like', 'tip', $this->tip])
-            ->andFilterWhere(['like', 'content_before', $this->content_before])
-            ->andFilterWhere(['like', 'content_after', $this->content_after]);
+            ->andFilterWhere(['like', 'tip', $this->tip]);
 
         //GlobalSearch
         $globalSearchField = array("or");
