@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model stesi\cms\models\Content */
@@ -14,9 +15,9 @@ $this->params['breadcrumbs'][] = Yii::t('gles/content/labels', 'Update');
 ?>
 <div class="content-update">
 
-
+    <?php Pjax::begin(); ?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+    <?php Pjax::end(); ?>
 </div>

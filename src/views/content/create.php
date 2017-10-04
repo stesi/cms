@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 
 /* @var $this yii\web\View */
@@ -12,9 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-create">
 
-
+    <?php Pjax::begin(); ?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+    <?php Pjax::end(); ?>
 </div>

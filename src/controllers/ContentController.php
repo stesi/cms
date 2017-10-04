@@ -2,7 +2,9 @@
 
 namespace stesi\cms\controllers;
 
+use app\actions\AddFormInputAction;
 use app\actions\CreateAction;
+use app\actions\CreateAjaxAction;
 use app\actions\DeleteAction;
 use app\actions\DetailAction;
 use app\actions\IndexAction;
@@ -12,7 +14,9 @@ use app\actions\UpdateAction;
 use app\actions\ViewAction;
 use app\controllers\StesiController;
 use stesi\cms\models\Content;
+use stesi\cms\models\ContentRelationManagerChildren;
 use stesi\cms\models\grid\ContentGrid;
+use Yii;
 use yii\db\Query;
 
 /**
@@ -31,6 +35,10 @@ class ContentController extends StesiController
                 'class' => CreateAction::className(),
                 'modelClass' => Content::className(),
             ],
+            'create-ajax' => [
+                'class' => CreateAjaxAction::class,
+                'modelClass' => Content::class,
+            ],
             'update' => [
                 'class' => UpdateAction::className(),
                 'modelClass' => Content::className(),
@@ -43,6 +51,9 @@ class ContentController extends StesiController
             'view' => [
                 'class' => ViewAction::className(),
                 'modelClass' => Content::className(),
+                'additionalParams' => [
+                    'detailRules' => $this->getDetailRelationsColumnsView()
+                ]
             ],
             'detail' => [
                 'class' => DetailAction::className(),
@@ -50,14 +61,23 @@ class ContentController extends StesiController
                 'returnModel' => true,
                 'view' => "@app/views/layouts/_detail_view",
                 'additionalParams' => [
-                    //'detailRules' => $this->getDetailRelationsColumns()
+                    'detailRules' => $this->getDetailRelationsColumns()
                 ]
 
             ],
-            ' content-list' => [
+            'add-form-input' => [
+                'class' => AddFormInputAction::className(),
+            ],
+            'content-list' => [
                 'class' => ListAction::className(),
                 'modelClass' => Content::className(),
                 'description_name' => 'code',
+            ],
+            'content-title-list' => [
+                'class' => ListActionQuery::className(),
+                'description_name' => 'title',
+                'query' => (new Query())->select(['id as id', 'CONCAT(id, " - ", title) as text'])->distinct()
+                    ->from('content')
             ],
             'content-type-list' => [
                 'class' => ListActionQuery::className(),
@@ -67,4 +87,40 @@ class ContentController extends StesiController
             ],
         ];
     }
+
+    public function getDetailRelationsColumns()
+    {
+        return ['default' => [
+            [
+                'label' => Yii::t('cms/content/labels', 'content_tabs.content_relation_manager'),
+                'name' => 'contentRelationManagerChildrens',
+                'controllerClass' => ContentRelationManagerChildren::class,
+                'columns' => [
+                    'content_child_id',
+                    'contentChild.title'
+                ]
+            ],
+        ]];
+    }
+
+    public function getDetailRelationsColumnsView()
+    {
+        return ['default' => [
+            [
+                'label' => Yii::t('cms/content/labels', 'content_tabs.content_relation_manager'),
+                'name' => 'contentRelationManagerChildrens',
+                'controllerClass' => ContentRelationManagerChildren::class,
+                'columns' => [
+                    'content_child_id',
+                    'contentChild.title',
+                    'contentChild.content_type_id',
+                    'position',
+                    'contentChild.start_date',
+                    'contentChild.end_date',
+                ]
+            ],
+        ]];
+    }
 }
+
+

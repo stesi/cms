@@ -2,22 +2,56 @@
 
 namespace stesi\cms\models;
 
+use app\behaviors\DateRangeBehavior;
+use app\behaviors\DateTimeFormatBehavior;
+use nhkey\arh\ActiveRecordHistoryBehavior;
 use Yii;
 use \stesi\cms\models\base\Content as BaseContent;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "content".
+ *
+ * @property string $end_date
+ * @property string $start_date
+ *
+ * @property \stesi\cms\models\ContentRelationManager[] $contentRelationManagers
+ * @property \stesi\cms\models\ContentRelationManagerChildren[] $contentRelationManagerChildrens
+ *
  */
 class Content extends BaseContent
 {
+
+    public $autoRelationMethodNameEnabled = ['getContentRelationManagers', 'getContentRelationManagerChildrens'];
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'date_format' => [
+                'class' => DateTimeFormatBehavior::class,
+                'attributes' => ['start', 'end'],
+            ],
+            'date_range' => [
+                'class' => DateRangeBehavior::class,
+                'attribute' => 'start_end_range',
+                'startAttribute' => 'start_date',
+                'endAttribute' => 'end_date',
+            ],
+            ActiveRecordHistoryBehavior::className(), //For log crud operations
+        ]);
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
-        return parent::rules();
-        //return array_merge(parent::rules(), []);
-        //return array_replace_recursive(parent::rules(),[]);
+        return ArrayHelper::merge(parent::rules(), [
+            [['start_end_range'], 'safe'], // safe because start/end will be validated
+        ]);
 
     }
 
@@ -61,5 +95,31 @@ class Content extends BaseContent
             'content_after' => Yii::t('cms/content/hints', 'content_hints.content_after'),
             'is_block_page' => Yii::t('cms/content/hints', 'content_hints.is_block_page'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getContentRelationManagers()
+    {
+        return $this->hasMany(ContentRelationManager::className(), ['content_child_id' => 'id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getContentRelationManagerChildrens()
+    {
+        return $this->hasMany(ContentRelationManagerChildren::className(), ['content_parent_id' => 'id']);
+    }
+
+    /**
+     * @return string Id with info
+     */
+    public function getIdWithInfo()
+    {
+        return implode(' - ', [
+            ArrayHelper::getValue($this, 'id'),
+            ArrayHelper::getValue($this, 'title')
+        ]);
     }
 }

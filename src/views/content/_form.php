@@ -1,6 +1,7 @@
 <?php
 
 use app\widgets\CreatableSelect2;
+use kartik\daterange\DateRangePicker;
 use kartik\widgets\DepDrop;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -8,7 +9,6 @@ use kartik\form\ActiveField;
 use kartik\form\ActiveForm;
 use yii\bootstrap\Alert;
 use yii\helpers\Url;
-use yii\widgets\Pjax;
 use kartik\builder\Form;
 use kartik\builder\FormGrid;
 use kartik\widgets\Select2;
@@ -19,7 +19,7 @@ use kartik\widgets\Select2;
  * @var $contentType stesi\cms\models\ContentType
  */
 ?>
-<?php Pjax::begin();?>
+
 <div class="content-form">
     <?php //echo $this->render("@app/views/layouts/flash-error"); ?>
 
@@ -81,14 +81,65 @@ use kartik\widgets\Select2;
                 ]
     ]); ?>
 
+    <?php echo $form->field($model,"body")->textarea(); ?>
+
+    <?php echo $form->field($model,"icon")->textInput(); ?>
+
+    <?php echo $form->field($model,"tip")->textInput(); ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('gles/content/labels', 'Create') : Yii::t('gles/content/labels', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <label class="control-label"><?= $model->getAttributeLabel(Yii::t('cms/content/labels', 'content_labels.form.start_end_range')) ?></label>
+        <div class="input-group drp-container">
+            <?= DateRangePicker::widget([
+                'model' => $model,
+                'attribute' => 'start_end_range',
+                'useWithAddon' => true,
+                'convertFormat' => true,
+                'pluginOptions' => [
+                    'locale' => [
+                        'separator' => Yii::t('format', 'separator'),
+                        'format' => Yii::t('format', 'date'),
+                    ],
+                ]
+            ]); ?>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+    </div>
+
+    <?php $subFormsItems = [
+        [
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('cms/content/labels', 'content_tabs.content_relation_manager')),
+            'content' => $this->render('_form_content_relation_manager', [
+                'dataProvider' => new \yii\data\ArrayDataProvider(['allModels' => $model->contentRelationManagerChildrens]),
+                'form' => $form
+            ])
+        ]
+    ];
+    echo kartik\tabs\TabsX::widget([
+        'items' => $subFormsItems,
+        'position' => kartik\tabs\TabsX::POS_ABOVE,
+        'encodeLabels' => false,
+        'pluginOptions' => [
+            'bordered' => true,
+            'sideways' => true,
+            'enableCache' => false,
+        ],
+    ]);
+    ?>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-1">
+                <?= Html::resetButton(Yii::t('app/buttons', 'form_button_reset'), ['class' => 'btn btn-default']) ?>
+            </div>
+            <div class="col-sm-11 text-right">
+                <?= Html::submitButton($model->isNewRecord ? Yii::t('app/buttons', 'form_button_create') : Yii::t('app/buttons', 'form_button_update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-info']) ?>
+            </div>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
-<?php Pjax::end();?>
+
 
