@@ -3,6 +3,7 @@
 namespace stesi\cms\models\base;
 
 use app\models\base\StesiModel;
+use app\stesi\cms\src\models\ContentQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
@@ -101,6 +102,15 @@ class Content extends StesiModel
                 'updatedByAttribute' => 'updated_by',
             ],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return ContentQuery
+     */
+    public static function find()
+    {
+        return new ContentQuery(get_called_class());
     }
 
 }
