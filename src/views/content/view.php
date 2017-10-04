@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $model stesi\cms\models\Content */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('cms/content/labels', 'Contents'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/breadcrumbs', 'content_view_breadcrumbs.Index'), 'url' => ["index"]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/breadcrumbs', 'view_breadcrumbs.Id').$model->id, 'url' => ["view", "id" => $model->id]];
 
 $this->params['buttons'] = [
     ['label' => Yii::t('app/buttons', 'view_button_update'), 'url' => ['update', "id" => $model->id], 'linkOptions' => ["class" => "showModalButton btn btn-sm btn-info", "title" =>Yii::t('app/titles', 'view_button_update')]],

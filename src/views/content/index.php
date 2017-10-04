@@ -4,6 +4,7 @@ use kartik\grid\GridView;
 use yii\helpers\Url;
 
 $this->title = Yii::t('cms/content/labels', 'Contents');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/breadcrumbs', 'content_index_breadcrumbs.Index'), 'url' => ['index']];
 
 $this->params['buttons'] = [
     ['label' => Yii::t('cms/content/buttons', 'content_buttons.index.create_content'),
