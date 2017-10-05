@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
  * @property string $end_date
  * @property string $start_date
  *
+ * @property \app\modules\gles\models\User $createdBy
  * @property \stesi\cms\models\ContentRelationManager[] $contentRelationManagers
  * @property \stesi\cms\models\ContentRelationManagerChildren[] $contentRelationManagerChildrens
  *
@@ -110,6 +111,13 @@ class Content extends BaseContent
     public function getContentRelationManagerChildrens()
     {
         return $this->hasMany(ContentRelationManagerChildren::className(), ['content_parent_id' => 'id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(\app\modules\gles\models\User::className(), ['id' => 'created_by']);
     }
 
     /**
