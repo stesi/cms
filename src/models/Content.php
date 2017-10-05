@@ -113,6 +113,15 @@ class Content extends BaseContent
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getContentChildrens()
+    {
+        return $this->hasMany(Content::className(), ['id' => 'content_child_id'])->via("contentRelationManagerChildrens");
+    }
+
+
+    /**
      * @return string Id with info
      */
     public function getIdWithInfo()
