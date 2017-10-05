@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app/breadcrumbs', 'content_
 
 $this->params['buttons'] = [
     ['label' => Yii::t('cms/content/buttons', 'content_buttons.index.create_content'),
-        'url' => ['content/create'],
+        'url' => ['create'],
         'linkOptions' => ["class" => "showModalButton btn btn-sm btn-default",
             "title" => Yii::t('cms/content/titles', 'content_buttons_titles.index.create_content'),
             'data' => ['modal-unique' => 'content-create'],],],
