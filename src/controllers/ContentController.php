@@ -12,7 +12,7 @@ use app\actions\ListAction;
 use app\actions\ListActionQuery;
 use app\actions\UpdateAction;
 use app\actions\ViewAction;
-use app\controllers\StesiController;
+use stesi\core\controllers\StesiController;
 use stesi\cms\models\Content;
 use stesi\cms\models\ContentRelationManagerChildren;
 use stesi\cms\models\grid\ContentGrid;
