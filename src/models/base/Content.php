@@ -82,7 +82,7 @@ class Content extends StesiModel
         return $this->hasOne(\app\modules\gles\models\User::className(), ['id' => 'updated_by']);
     }
 
-    
+
 /**
      * @inheritdoc
      * @return array mixed
