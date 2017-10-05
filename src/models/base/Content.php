@@ -2,7 +2,7 @@
 
 namespace stesi\cms\models\base;
 
-use app\models\base\StesiModel;
+use stesi\core\models\base\StesiModel;
 use app\stesi\cms\src\models\ContentQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
