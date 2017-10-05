@@ -6,20 +6,20 @@ use yii\widgets\DetailView;
 /* @var $model stesi\cms\models\Content */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('gles/content/labels', 'Contents'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/breadcrumbs', 'content_view_breadcrumbs.Index'), 'url' => ["index"]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/breadcrumbs', 'view_breadcrumbs.Id').$model->id, 'url' => ["view", "id" => $model->id]];
 
 $this->params['buttons'] = [
-    ['label' => 'Update', 'url' => ['update', "id" => $model->id], 'linkOptions' => ["class" => "showModalButton btn btn-sm btn-primary", "title" => 'Update']],
-    ['label' => 'Delete', 'url' => ['delete', "id" => $model->id], 'linkOptions' => ["class" => "btn btn-sm btn btn-danger", "title" => 'Delete',
+    ['label' => Yii::t('app/buttons', 'view_button_update'), 'url' => ['update', "id" => $model->id], 'linkOptions' => ["class" => "showModalButton btn btn-sm btn-info", "title" =>Yii::t('app/titles', 'view_button_update')]],
+    ['label' => Yii::t('app/buttons', 'view_button_delete'), 'url' => ['delete', "id" => $model->id], 'linkOptions' => ["class" => "btn btn-sm btn btn-danger", "title" => Yii::t('app/titles', 'view_button_delete'),
         'data' => [
-            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+            'confirm' => Yii::t('app/message', 'Are you sure you want to delete this item?'),
             'method' => 'post',
         ]]]
 ];
 
 ?>
-<div class="content-view col-md-12">
+<div class="content-view">
 
     <?= DetailView::widget([
         'model' => $model,
@@ -27,6 +27,7 @@ $this->params['buttons'] = [
             'id',
             'content_type_id',
             'title',
+            'summary',
             'body:ntext',
             'icon',
             'tip',
@@ -36,10 +37,14 @@ $this->params['buttons'] = [
             'updated_by',
             'start_date',
             'end_date',
-            'content_before:ntext',
-            'content_after:ntext',
-            'is_block_page',
         ],
-    ]) ?>
+    ]) ;
+    ?>
+
+
+
+<?php
+    require_once(__DIR__ . "/../../../../../views/layouts/_detail_view.php")
+    ?>
 
 </div>

@@ -3,6 +3,7 @@
 namespace stesi\cms\models\base;
 
 use stesi\core\models\base\StesiModel;
+use app\stesi\cms\src\models\ContentQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
@@ -23,9 +24,6 @@ use yii\behaviors\BlameableBehavior;
  * @property integer $updated_by
  * @property string $start_date
  * @property string $end_date
- * @property string $content_before
- * @property string $content_after
- * @property integer $is_block_page
  *
  * @property \stesi\cms\models\ContentType $contentType
  */
@@ -37,9 +35,8 @@ class Content extends StesiModel
     public function rules()
     {
         return [
-            [['body', 'content_before', 'content_after'], 'string'],
+            [['body'], 'string'],
             [['created_at', 'updated_at', 'start_date', 'end_date'], 'safe'],
-            [['is_block_page'], 'integer'],
             [['content_type_id'], 'string', 'max' => 64],
             [['content_type_id'], 'default'],
             [['title', 'icon', 'tip'], 'string', 'max' => 128],
@@ -48,7 +45,8 @@ class Content extends StesiModel
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => \app\modules\gles\models\User::className(), 'targetAttribute' => ['updated_by' => 'id']],
             [['summary'], 'string', 'max' => 256],
             [['summary'], 'default'],
-            [['content_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => \stesi\cms\models\ContentType::className(), 'targetAttribute' => ['content_type_id' => 'id']]
+            [['content_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => \stesi\cms\models\ContentType::className(), 'targetAttribute' => ['content_type_id' => 'id']],
+            [['title','content_type_id', 'start_date', 'end_date'], 'required'],
         ];
     }
     
@@ -83,7 +81,8 @@ class Content extends StesiModel
     {
         return $this->hasOne(\app\modules\gles\models\User::className(), ['id' => 'updated_by']);
     }
-    
+
+
 /**
      * @inheritdoc
      * @return array mixed
@@ -103,6 +102,15 @@ class Content extends StesiModel
                 'updatedByAttribute' => 'updated_by',
             ],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return ContentQuery
+     */
+    public static function find()
+    {
+        return new ContentQuery(get_called_class());
     }
 
 }

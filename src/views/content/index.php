@@ -4,12 +4,14 @@ use kartik\grid\GridView;
 use yii\helpers\Url;
 
 $this->title = Yii::t('cms/content/labels', 'Contents');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/breadcrumbs', 'content_index_breadcrumbs.Index'), 'url' => ['index']];
 
 $this->params['buttons'] = [
     ['label' => Yii::t('cms/content/buttons', 'content_buttons.index.create_content'),
         'url' => ['content/create'],
         'linkOptions' => ["class" => "showModalButton btn btn-sm btn-default",
-            "title" => Yii::t('cms/content/titles', 'content_buttons_titles.index.create_content')],],
+            "title" => Yii::t('cms/content/titles', 'content_buttons_titles.index.create_content'),
+            'data' => ['modal-unique' => 'content-create'],],],
 ];
 
 ?>
@@ -42,9 +44,6 @@ $this->params['buttons'] = [
         // 'updated_by',
         'start_date',
         'end_date',
-        // 'content_before:ntext',
-        // 'content_after:ntext',
-        'is_block_page',
         ['class' => 'kartik\grid\ActionColumn'],
     ];
 
