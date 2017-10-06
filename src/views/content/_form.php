@@ -75,6 +75,12 @@ use kartik\widgets\Select2;
                             'summary' => [
                                 'type' => Form::INPUT_TEXT,
                             ],
+                            'icon' => [
+                                'type' => Form::INPUT_WIDGET,
+                                'widgetClass' => '\insolita\iconpicker\Iconpicker',
+                                'iconset'=>'fontawesome',
+                                'clientOptions'=>['rows'=>8,'cols'=>10,'placement'=>'right'],
+                            ],
                         ]
 
                     ],
@@ -88,11 +94,6 @@ use kartik\widgets\Select2;
         'preset' => 'basic'
     ]); ?>
 
-    <?php echo $form->field($model, 'icon')->widget('\insolita\iconpicker\Iconpicker',
-        [
-            'iconset'=>'fontawesome',
-            'clientOptions'=>['rows'=>8,'cols'=>10,'placement'=>'right'],
-        ])->label('Choose icon');?>
 
     <?php echo $form->field($model,"tip")->textInput(); ?>
 
