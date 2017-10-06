@@ -28,7 +28,7 @@ $this->params['buttons'] = [
             'content_type_id',
             'title',
             'summary',
-            'body:ntext',
+            'body:html',
             'icon',
             'tip',
             'created_at',

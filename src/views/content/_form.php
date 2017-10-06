@@ -81,9 +81,18 @@ use kartik\widgets\Select2;
                 ]
     ]); ?>
 
-    <?php echo $form->field($model,"body")->textarea(); ?>
+    <?php //echo $form->field($model,"body")->textarea(); ?>
 
-    <?php echo $form->field($model,"icon")->textInput(); ?>
+    <?php echo $form->field($model, 'body')->widget(\dosamigos\ckeditor\CKEditor::className(), [
+        'options' => ['rows' => 6],
+        'preset' => 'basic'
+    ]); ?>
+
+    <?php echo $form->field($model, 'icon')->widget('\insolita\iconpicker\Iconpicker',
+        [
+            'iconset'=>'fontawesome',
+            'clientOptions'=>['rows'=>8,'cols'=>10,'placement'=>'right'],
+        ])->label('Choose icon');?>
 
     <?php echo $form->field($model,"tip")->textInput(); ?>
 
