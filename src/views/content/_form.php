@@ -71,15 +71,42 @@ use kartik\widgets\Select2;
                         ],
                     ],
                     [
+                        'columns'=>4,
+                        'autoGenerateColumns' => false,
                         'attributes' => [
-                            'summary' => [
+                            'start_end_range' => [
+                                'type' => Form::INPUT_WIDGET,
+                                'columnOptions'=>['colspan'=>2],
+                                'widgetClass' => DateRangePicker::className(),
+                                'options' =>  [
+                                    'convertFormat' => true,
+                                    'pluginOptions' => [
+                                        'locale' => [
+                                            'separator' => Yii::t('format', 'separator'),
+                                            'format' => Yii::t('format', 'date'),
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            'tip' => [
                                 'type' => Form::INPUT_TEXT,
+                                'columnOptions'=>['colspan'=>1],
                             ],
                             'icon' => [
                                 'type' => Form::INPUT_WIDGET,
+                                'columnOptions'=>['colspan'=>1],
                                 'widgetClass' => '\insolita\iconpicker\Iconpicker',
                                 'iconset'=>'fontawesome',
-                                'clientOptions'=>['rows'=>8,'cols'=>10,'placement'=>'right'],
+                                'clientOptions'=>['rows'=>8,'cols'=>10,'placement'=>'left'],
+                            ],
+
+                        ]
+
+                    ],
+                    [
+                        'attributes' => [
+                            'summary' => [
+                                'type' => Form::INPUT_TEXTAREA,
                             ],
                         ]
 
@@ -87,43 +114,21 @@ use kartik\widgets\Select2;
                 ]
     ]); ?>
 
-    <?php //echo $form->field($model,"body")->textarea(); ?>
-
-    <?php echo $form->field($model, 'body')->widget(\dosamigos\ckeditor\CKEditor::className(), [
-        'options' => ['rows' => 6],
-        'preset' => 'basic'
-    ]); ?>
-
-
-    <?php echo $form->field($model,"tip")->textInput(); ?>
-
-    <div class="form-group">
-        <label class="control-label"><?= $model->getAttributeLabel(Yii::t('cms/content/labels', 'content_labels.form.start_end_range')) ?></label>
-        <div class="input-group drp-container">
-            <?= DateRangePicker::widget([
-                'model' => $model,
-                'attribute' => 'start_end_range',
-                'useWithAddon' => true,
-                'convertFormat' => true,
-                'pluginOptions' => [
-                    'locale' => [
-                        'separator' => Yii::t('format', 'separator'),
-                        'format' => Yii::t('format', 'date'),
-                    ],
-                ]
-            ]); ?>
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-        </div>
-    </div>
-
     <?php $subFormsItems = [
+        [
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('cms/content/labels', 'content_tabs.content_body')),
+            'content' => $form->field($model, 'body')->widget(\dosamigos\ckeditor\CKEditor::className(), [
+                'options' => ['rows' => 6],
+                'preset' => 'basic'
+            ])
+        ],
         [
             'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('cms/content/labels', 'content_tabs.content_relation_manager')),
             'content' => $this->render('_form_content_relation_manager', [
                 'dataProvider' => new \yii\data\ArrayDataProvider(['allModels' => $model->contentRelationManagerChildrens]),
                 'form' => $form
             ])
-        ]
+        ],
     ];
     echo kartik\tabs\TabsX::widget([
         'items' => $subFormsItems,
