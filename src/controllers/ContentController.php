@@ -2,16 +2,16 @@
 
 namespace stesi\cms\controllers;
 
-use app\actions\AddFormInputAction;
-use app\actions\CreateAction;
-use app\actions\CreateAjaxAction;
-use app\actions\DeleteAction;
-use app\actions\DetailAction;
-use app\actions\IndexAction;
-use app\actions\ListAction;
-use app\actions\ListActionQuery;
-use app\actions\UpdateAction;
-use app\actions\ViewAction;
+use stesi\core\actions\AddFormInputAction;
+use stesi\core\actions\CreateAction;
+use stesi\core\actions\CreateAjaxAction;
+use stesi\core\actions\DeleteAction;
+use stesi\core\actions\DetailAction;
+use stesi\core\actions\IndexAction;
+use stesi\core\actions\ListAction;
+use stesi\core\actions\ListActionQuery;
+use stesi\core\actions\UpdateAction;
+use stesi\core\actions\ViewAction;
 use stesi\core\controllers\StesiController;
 use stesi\cms\models\Content;
 use stesi\cms\models\ContentRelationManagerChildren;
