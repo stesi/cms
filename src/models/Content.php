@@ -2,8 +2,8 @@
 
 namespace stesi\cms\models;
 
-use app\behaviors\DateRangeBehavior;
-use app\behaviors\DateTimeFormatBehavior;
+use stesi\core\behaviors\DateRangeBehavior;
+use stesi\core\behaviors\DateTimeFormatBehavior;
 use nhkey\arh\ActiveRecordHistoryBehavior;
 use Yii;
 use \stesi\cms\models\base\Content as BaseContent;
