@@ -37,7 +37,7 @@ class Module extends \yii\base\Module
 
     public function addMenuItems($menuEvent)
     {
-        $menuItems = require(__DIR__ . '/menu.php');
+        require(__DIR__ . '/menu.php');
         $menuEvent->insertItems($menuItems);
     }
 }
