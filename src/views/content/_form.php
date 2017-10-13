@@ -21,7 +21,7 @@ use kartik\widgets\Select2;
 ?>
 
 <div class="content-form">
-    <?php //echo $this->render("@app/views/layouts/flash-error"); ?>
+    <?php //echo $this->render("@stesi/backend/views/layouts/flash-error"); ?>
 
     <?php $form = ActiveForm::begin([
         'options' => ['data-pjax' => true ],

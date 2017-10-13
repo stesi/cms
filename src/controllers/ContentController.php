@@ -59,7 +59,7 @@ class ContentController extends StesiController
                 'class' => DetailAction::className(),
                 'modelClass' => Content::className(),
                 'returnModel' => true,
-                'view' => "@app/views/layouts/_detail_view",
+                'view' => "@stesi/backend/views/layouts/_detail_view",
                 'additionalParams' => [
                     'detailRules' => $this->getDetailRelationsColumns()
                 ]
