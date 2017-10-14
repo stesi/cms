@@ -44,7 +44,7 @@ $this->params['buttons'] = [
 
 
 <?php
-    require_once(__DIR__ . "/../../../../../views/layouts/_detail_view.php")
+    require_once(Yii::getAlias('@layoutPath/_detail_view.php'));
     ?>
 
 </div>
