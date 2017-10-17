@@ -1,6 +1,6 @@
 <?php
 
-use app\widgets\CreatableSelect2;
+use stesi\core\widgets\CreatableSelect2;
 use kartik\daterange\DateRangePicker;
 use kartik\widgets\DepDrop;
 use yii\helpers\ArrayHelper;
