@@ -28,7 +28,7 @@ class Module extends \yii\base\Module
             $this->controllerNamespace = 'stesi\cms\commands';
         }
 
-        Yii::$app->view->on(MenuEvent::EVENT_BEFORE_RENDER, [$this, 'addMenuItems']);
+        else {Yii::$app->view->on(MenuEvent::EVENT_BEFORE_RENDER, [$this, 'addMenuItems']);}
     }
 
     /**
