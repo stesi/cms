@@ -1,6 +1,6 @@
 <?php
 use stesi\cms\models\ContentRelationManager;
-use app\widgets\CreatableSelect2;
+use stesi\core\widgets\CreatableSelect2;
 use kartik\builder\TabularForm;
 use kartik\daterange\DateRangePicker;
 use kartik\form\ActiveForm;
