@@ -41,8 +41,8 @@ class Content extends StesiModel
             [['content_type_id'], 'default'],
             [['title', 'icon', 'tip'], 'string', 'max' => 128],
             [['title', 'icon', 'tip'], 'default'],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => \app\modules\gles\models\User::className(), 'targetAttribute' => ['created_by' => 'id']],
-            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => \app\modules\gles\models\User::className(), 'targetAttribute' => ['updated_by' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => \stesi\gles\models\User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => \stesi\gles\models\User::className(), 'targetAttribute' => ['updated_by' => 'id']],
             [['summary'], 'string', 'max' => 256],
             [['summary'], 'default'],
             [['content_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => \stesi\cms\models\ContentType::className(), 'targetAttribute' => ['content_type_id' => 'id']],
@@ -71,7 +71,7 @@ class Content extends StesiModel
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(\app\modules\gles\models\User::className(), ['id' => 'created_by']);
+        return $this->hasOne(\stesi\gles\models\User::className(), ['id' => 'created_by']);
     }
 
     /**
@@ -79,7 +79,7 @@ class Content extends StesiModel
      */
     public function getUpdatedBy()
     {
-        return $this->hasOne(\app\modules\gles\models\User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(\stesi\gles\models\User::className(), ['id' => 'updated_by']);
     }
 
 
